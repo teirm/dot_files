@@ -1,4 +1,3 @@
-
 "Random config settings that should be organized
 syntax on                   " enable syntax processing                       
 
@@ -33,6 +32,32 @@ set foldlevelstart=10   " open most folds by default
 " space open/close folds
 nnoremap <space> za
 
+" ctags configuration
+set tags=tags;
+
+" cscope configuration
+set csprg=/usr/bin/cscope
+
+" This function will load the cscope db from a 
+" relative location.
+function! LoadCscope()
+  let db = findfile("cscope.out", ".;")
+  if (!empty(db))
+    let path = strpart(db, 0, match(db, "/cscope.out$"))
+    set nocscopeverbose " suppress 'duplicate connection' error
+    exe "cs add " . db . " " . path
+    set cscopeverbose
+  " else add the database pointed to by environment variable 
+  elseif $CSCOPE_DB != "" 
+    cs add $CSCOPE_DB
+  endif
+endfunction
+au BufEnter /* call LoadCscope()
+
+" Enable file detection
+filetype on
+filetype plugin on
+
 " Movement
 " highlight last inserted text
 nnoremap gV `[v`]
@@ -59,24 +84,18 @@ Plugin 'Shougo/vimproc.vim'
 " denite
 Plugin 'Shougo/denite.nvim'
 
-"vim-javascript
+" vim-javascript
 Plugin 'pangloss/vim-javascript'
 
-
-"For coding in RUST
-filetype on
-au BufNewFile,BufRead *.rs set filetype=rust
-
-"For coding in nasm
-au BufNewFile,BufRead *.nasm set filetype=nasm
-
-
-"Makes the syntax highlighting not an eyesore
+" Makes the syntax highlighting not an eyesore
 hi MatchParen cterm=none ctermbg=none ctermfg=red
 hi Search cterm=NONE ctermfg=red ctermbg=black
 
-"Syntastic options
-"Only what was recommended by Git
+" Enable pathogen
+cal pathogen#infect()
+
+" Syntastic options
+" Only what was recommended on git
 
 set statusline+=%#warningsmsg#
 set statusline+=%{SyntasticStatuslineFlag()};
@@ -86,38 +105,35 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 1
-let g:syntastic_cpp_check_header = 1    " check C++ header files
 
-"Set assembly dialect to intel
+let g:syntastic_c_include_dirs = ["include"] " Use include directory for C headers
+let g:syntastic_cpp_check_header = 1    " check C++ header files
+let g:syntastic_cpp_include_dirs = ["include"] " Include include directory files 
+
+" Set assembly dialect to intel
 let g:synstastic_asm_compiler_options = '-mtune-native'
 let g:synstastic_asm_dialect = 'intel'
 
-"Enables spell checking
-"Mildly annoying while coding
-"setlocal spell
+" Use nasm for all .nasm files
+autocmd BufNewFile,BufRead *.nasm set filetype=nasm
 
+" Do not expand tabs for Makefiles
 
-"NERDTree settings
-let g:NERDTreeDirArrows=1
-let g:NERDTreeDirArrowCollapsible = '▾'
-let g:NERDTreeDirArrowExpandable = '▸'
+autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
 
-"Additional Solarized options
+" Additional Solarized Options
 let g:solarized_termtrans = 1
-let g:solarized_termcolors=256
+let g:solarized_termcolors = 256
 let g:solarized_bold = 1
 let g:solarized_underline = 1
 let g:solarized_italic = 1
 let g:solarized_contrast = "high"
 let g:solarized_visibility = "high"
 
-"Enabling pathogen and solarized
-set nocompatible
-set t_Co=16
-cal pathogen#infect()
-set background=dark " dark | light "
+" Solarized via pathogen
+set background=dark
 colorscheme solarized
-filetype plugin on
 
-set cursorline
-
+" Enables spell checking
+" Mildly annoying while coding
+"setlocal spell
