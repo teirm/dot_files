@@ -63,7 +63,6 @@ filetype plugin on
 nnoremap gV `[v`]
 
 "Setting status line
-set laststatus=2 
 set statusline+=%f			"file name
 set statusline+=%1*%=%5l%*	"current line
 set statusline+=%2*/%L%*	"total lines
@@ -87,20 +86,21 @@ Plugin 'Shougo/denite.nvim'
 " vim-javascript
 Plugin 'pangloss/vim-javascript'
 
+Plugin 'vim-syntastic/syntastic'
+
+" vim-solarized
+Plugin 'altercation/vim-colors-solarized'
+
+call vundle#end()
+
 " Makes the syntax highlighting not an eyesore
 hi MatchParen cterm=none ctermbg=none ctermfg=red
 hi Search cterm=NONE ctermfg=red ctermbg=black
 
-" Enable pathogen
-cal pathogen#infect()
-
 " Syntastic options
 " Only what was recommended on git
 
-set statusline+=%#warningsmsg#
-set statusline+=%{SyntasticStatuslineFlag()};
-set statusline+=%*
-
+let g:statline_syntastic = 0
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
@@ -113,6 +113,10 @@ let g:syntastic_cpp_include_dirs = ["include"] " Include include directory files
 " Set assembly dialect to intel
 let g:synstastic_asm_compiler_options = '-mtune-native'
 let g:synstastic_asm_dialect = 'intel'
+
+set statusline+=%#warningsmsg#
+set statusline+=%{SyntasticStatuslineFlag()};
+set statusline+=%*
 
 " Use nasm for all .nasm files
 autocmd BufNewFile,BufRead *.nasm set filetype=nasm
@@ -129,6 +133,16 @@ let g:solarized_underline = 1
 let g:solarized_italic = 1
 let g:solarized_contrast = "high"
 let g:solarized_visibility = "high"
+
+" Go auto formating
+let g:go_fmt_autosave = 1 
+
+" Go syntax highlighting
+let g:go_highlight_structs = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
 
 " Solarized via pathogen
 set background=dark
