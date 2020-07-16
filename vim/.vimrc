@@ -9,8 +9,7 @@ set shiftwidth=4            " number of spaces used for autoindent
 set autoindent              " compy indenty from current line to new line
 set cindent                 " indent based on C indenting rules    
 
-" UI Config
-set number                  " show line numbers
+" UI Config set number                  " show line numbers
 set cursorline              " highlight current line
 set ruler                   " show the line and column number of cursor
 set wildmenu                " visual autocomplete for command menu    
@@ -86,6 +85,9 @@ Plugin 'Shougo/denite.nvim'
 " vim-javascript
 Plugin 'pangloss/vim-javascript'
 
+" solarized
+Plugin 'altercation/solarized'
+
 Plugin 'vim-syntastic/syntastic'
 
 " vim-solarized
@@ -103,6 +105,11 @@ hi Search cterm=NONE ctermfg=red ctermbg=black
 " Syntastic options
 " Only what was recommended on git
 
+set statusline+=%#warningsmsg#
+set statusline+=%{SyntasticStatuslineFlag()};
+set statusline+=%*
+
+" disable syntatic on the statusline
 let g:statline_syntastic = 0
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -130,7 +137,7 @@ autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
 
 " Additional Solarized Options
 let g:solarized_termtrans = 1
-let g:solarized_termcolors = 256
+let g:solarized_termcolors = 256 
 let g:solarized_bold = 1
 let g:solarized_underline = 1
 let g:solarized_italic = 1
