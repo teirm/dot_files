@@ -63,7 +63,6 @@ filetype plugin on
 nnoremap gV `[v`]
 
 "Setting status line
-set laststatus=2 
 set statusline+=%f			"file name
 set statusline+=%1*%=%5l%*	"current line
 set statusline+=%2*/%L%*	"total lines
@@ -87,12 +86,17 @@ Plugin 'Shougo/denite.nvim'
 " vim-javascript
 Plugin 'pangloss/vim-javascript'
 
+" syntastic
+Plugin 'vim-syntastic/syntastic' 
+
+" solarized
+Plugin 'altercation/solarized'
+
+call vundle#end()
+
 " Makes the syntax highlighting not an eyesore
 hi MatchParen cterm=none ctermbg=none ctermfg=red
 hi Search cterm=NONE ctermfg=red ctermbg=black
-
-" Enable pathogen
-cal pathogen#infect()
 
 " Syntastic options
 " Only what was recommended on git
@@ -101,6 +105,8 @@ set statusline+=%#warningsmsg#
 set statusline+=%{SyntasticStatuslineFlag()};
 set statusline+=%*
 
+" disable syntatic on the statusline
+let g:statline_syntastic = 0
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
@@ -129,10 +135,6 @@ let g:solarized_underline = 1
 let g:solarized_italic = 1
 let g:solarized_contrast = "high"
 let g:solarized_visibility = "high"
-
-" Solarized via pathogen
-set background=dark
-colorscheme solarized
 
 " Enables spell checking
 " Mildly annoying while coding
