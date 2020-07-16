@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 9
+font xft:Source Code Pro 12
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -149,41 +149,29 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-#Remove title bars
+# Disable window title bars
 for_window [class="^.*"] border pixel 0
 
-#Set global gaps
-gaps inner 5
-gaps outer 5
-
-# Multihead set up if HDMI is connected on boot
-exec --no-startup-id /home/teirm/.config/autostart/multihead  
-
-# Set background image
-exec --no-startup-id /home/teirm/.fehbg
-
-#start dropbox sync
-exec --no-startup-id dropbox
-
-# Turn off terminal bell
-exec --no-startup-id xset b off
+# Set gaps
+gaps inner 10 
+gaps outer 10 
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-	output HDMI1
-	status_command i3status
-    font pango:DejaVu Sans Mono 10
+        status_command i3status | ~/.config/i3status/my_i3status.py
+	    font xft:Source Code Pro 12
+
+        colors {
+            background      #292d3e
+        }
 }
 
-bar {
-	output LVDS1
-	status_command i3status
-    font pango:DejaVu Sans Mono 10
-}
+# Turn off the terminal bell
+exec --no-startup-id -xset b off
+
+# Set background image
+exec --no-startup-id /home/teirm/.fehbg
 
 #Apply urxvt settings
 exec --no-startup-id xrdb -merge ~/.Xresources
-
-#### RULES FOR SPECIFIC APLICATIONS ####
-for_window [class="Gimp"] floating enable, border normal

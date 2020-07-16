@@ -91,6 +91,9 @@ Plugin 'vim-syntastic/syntastic'
 " vim-solarized
 Plugin 'altercation/vim-colors-solarized'
 
+" vim-go
+Plugin 'fatih/vim-go'
+
 call vundle#end()
 
 " Makes the syntax highlighting not an eyesore
