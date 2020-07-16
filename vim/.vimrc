@@ -147,8 +147,9 @@ let g:go_highlight_functions = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 
-" Solarized via pathogen
+" Solarized settings
 set background=dark
+set t_Co=256
 colorscheme solarized
 
 " Enables spell checking
