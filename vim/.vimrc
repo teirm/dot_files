@@ -9,8 +9,7 @@ set shiftwidth=4            " number of spaces used for autoindent
 set autoindent              " compy indenty from current line to new line
 set cindent                 " indent based on C indenting rules    
 
-" UI Config
-set number                  " show line numbers
+" UI Config set number                  " show line numbers
 set cursorline              " highlight current line
 set ruler                   " show the line and column number of cursor
 set wildmenu                " visual autocomplete for command menu    
@@ -86,13 +85,9 @@ Plugin 'Shougo/denite.nvim'
 " vim-javascript
 Plugin 'pangloss/vim-javascript'
 
-<<<<<<< HEAD
-" syntastic
-Plugin 'vim-syntastic/syntastic' 
-
 " solarized
 Plugin 'altercation/solarized'
-=======
+
 Plugin 'vim-syntastic/syntastic'
 
 " vim-solarized
@@ -100,7 +95,6 @@ Plugin 'altercation/vim-colors-solarized'
 
 " vim-go
 Plugin 'fatih/vim-go'
->>>>>>> 90691489164df54582a96102ebdfb9b849a0d773
 
 call vundle#end()
 
@@ -111,14 +105,11 @@ hi Search cterm=NONE ctermfg=red ctermbg=black
 " Syntastic options
 " Only what was recommended on git
 
-<<<<<<< HEAD
 set statusline+=%#warningsmsg#
 set statusline+=%{SyntasticStatuslineFlag()};
 set statusline+=%*
 
 " disable syntatic on the statusline
-=======
->>>>>>> 90691489164df54582a96102ebdfb9b849a0d773
 let g:statline_syntastic = 0
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -146,15 +137,13 @@ autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
 
 " Additional Solarized Options
 let g:solarized_termtrans = 1
-let g:solarized_termcolors = 256
+let g:solarized_termcolors = 256 
 let g:solarized_bold = 1
 let g:solarized_underline = 1
 let g:solarized_italic = 1
 let g:solarized_contrast = "high"
 let g:solarized_visibility = "high"
 
-<<<<<<< HEAD
-=======
 " Go auto formating
 let g:go_fmt_autosave = 1 
 
@@ -167,9 +156,9 @@ let g:go_highlight_build_constraints = 1
 
 " Solarized via pathogen
 set background=dark
+set t_Co=256
 colorscheme solarized
 
->>>>>>> 90691489164df54582a96102ebdfb9b849a0d773
 " Enables spell checking
 " Mildly annoying while coding
 "setlocal spell
