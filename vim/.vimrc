@@ -9,7 +9,8 @@ set shiftwidth=4            " number of spaces used for autoindent
 set autoindent              " compy indenty from current line to new line
 set cindent                 " indent based on C indenting rules    
 
-" UI Config set number                  " show line numbers
+" UI Config 
+set number                  " show line numbers
 set cursorline              " highlight current line
 set ruler                   " show the line and column number of cursor
 set wildmenu                " visual autocomplete for command menu    
