@@ -97,6 +97,9 @@ Plugin 'altercation/vim-colors-solarized'
 " vim-go
 Plugin 'fatih/vim-go'
 
+" vim-better-sml
+Plugin 'jez/vim-better-sml'
+
 call vundle#end()
 
 " Makes the syntax highlighting not an eyesore
@@ -133,8 +136,12 @@ set statusline+=%*
 autocmd BufNewFile,BufRead *.nasm set filetype=nasm
 
 " Do not expand tabs for Makefiles
-
 autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
+
+
+" Syntastic options for C++
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = ' -std=c++17 -stdlib=libc++'
 
 " Additional Solarized Options
 let g:solarized_termtrans = 1
