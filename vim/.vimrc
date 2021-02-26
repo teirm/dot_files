@@ -122,7 +122,7 @@ let g:syntastic_check_on_wq = 1
 
 let g:syntastic_c_include_dirs = ["include"] " Use include directory for C headers
 let g:syntastic_cpp_check_header = 1    " check C++ header files
-let g:syntastic_cpp_include_dirs = ["include"] " Include include directory files 
+let g:syntastic_cpp_include_dirs = ["include"] " Use include directory for C headers
 
 " Set assembly dialect to intel
 let g:synstastic_asm_compiler_options = '-mtune-native'
@@ -140,8 +140,12 @@ autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
 
 
 " Syntastic options for C++
-let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_checkers = ['clang_check', 'gcc']
+let g:syntastic_cpp_compilers = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++17 -stdlib=libc++'
+
+" Syntastic options for cpp_clang_check
+let g:syntastic_clang_check_config_file = '.clang_check_config'
 
 " Additional Solarized Options
 let g:solarized_termtrans = 1
