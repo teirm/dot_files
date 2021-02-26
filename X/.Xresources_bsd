@@ -1,7 +1,7 @@
 !-- Fonts 
 
-URxvt.font: 		xft:Iosevka Term:size=12
-URxvt.boldFont:		xft:Iosevka Term:style=Bold:size=12	 
+URxvt.font: 		xft:xos4 Terminus:size=12
+URxvt.boldFont:		xft:xos4 Terminus:style=Bold:size=12	 
 Urxvt.letterSpace: 0
 
 Urxvt.geometry:     240*84

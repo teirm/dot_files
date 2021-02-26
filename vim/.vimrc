@@ -7,7 +7,7 @@ set softtabstop=4           " number of spaces in tab when editing
 set expandtab               " tabs are spaces
 set shiftwidth=4            " number of spaces used for autoindent
 set autoindent              " compy indenty from current line to new line
-set cindent                 " indent based on C indenting rules    
+set smartindent             " indent based on C indenting rules    
 
 " UI Config 
 set number                  " show line numbers
@@ -54,10 +54,6 @@ function! LoadCscope()
 endfunction
 au BufEnter /* call LoadCscope()
 
-" Enable file detection
-filetype on
-filetype plugin on
-
 " Movement
 " highlight last inserted text
 nnoremap gV `[v`]
@@ -97,7 +93,14 @@ Plugin 'altercation/vim-colors-solarized'
 " vim-go
 Plugin 'fatih/vim-go'
 
+" rust-vim
+Plugin 'rust-lang/rust.vim'
+
 call vundle#end()
+
+" Enable file detection
+filetype on
+filetype plugin on
 
 " Makes the syntax highlighting not an eyesore
 hi MatchParen cterm=none ctermbg=none ctermfg=red
