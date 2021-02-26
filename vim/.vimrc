@@ -93,13 +93,11 @@ Plugin 'altercation/vim-colors-solarized'
 " vim-go
 Plugin 'fatih/vim-go'
 
-<<<<<<< HEAD
 " rust-vim
 Plugin 'rust-lang/rust.vim'
-=======
+
 " vim-better-sml
 Plugin 'jez/vim-better-sml'
->>>>>>> a9d75a9ec6534224a4c2db5070afb533284c5a96
 
 call vundle#end()
 
